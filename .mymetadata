@@ -2,8 +2,8 @@
 <project-module
   type="WEB"
   name="jkxt"
-  id="tjfylawyer"
-  context-root="/tjfylawyer"
+  id="jkxt"
+  context-root="/jkxt"
   j2ee-spec="5.0"
   archive="jkxt.war">
   <attributes>

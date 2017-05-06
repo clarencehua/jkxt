@@ -40,17 +40,12 @@
 				hibernate.show_sql=true
 				hibernate.hbm2ddl.auto=none </value>
 		</property>
-		<!-- <property name="annotatedClasses">
-			<list>
-				<value>software.bbs.data.Test</value>
-			</list>
-		</property> -->
 		<property name="packagesToScan">
 			<list>
 				<value>software.lawyer.data.dataobject</value>
 			</list>
 		</property>
-	</bean>
+		</bean>
 	<!-- <context:component-scan base-package="software.bbs.data.dao"></context:component-scan> -->
 	<!-- DAO -->
 	<!-- <bean id="userDao" class="software.bbs.data.dao.UserDao">
@@ -92,12 +87,21 @@
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设置文件长传最大为100MB -->
+		<property name="maxUploadSize">
+			<value>104857600</value>
+		</property>
+	</bean>
+	
 	    <!-- 所有业务dao的parent -->
     <bean id="baseDao" abstract="true">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
     <bean id="userDao" class="software.lawyer.data.dao.impl.UserDaoImpl" parent="baseDao"></bean>
-	<bean id = "postDao" class="software.lawyer.data.dao.impl.PostDaoImpl" parent="baseDao"></bean>
-	<bean id = "replyDao" class = "software.lawyer.data.dao.impl.ReplyDaoImpl" parent = "baseDao"></bean>
-</beans>
+	<bean id="deptDao" class="software.lawyer.data.dao.impl.DeptDaoImpl" parent="baseDao"></bean>
+	
+	</beans>
 
