@@ -24,4 +24,8 @@ public interface DeptService {
 	public List<Dept> findObjects();
 	
 	public PageResult getWzPageList( String start, String pageLength);
+	//查找有效的部门
+	public List<Dept> findVaildDept();
+	//DEPT根据id删除
+	public void deleteById( Serializable id);
 }

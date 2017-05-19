@@ -70,6 +70,7 @@ public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements Base
 
 	public List<T> findObjects(QueryHelper queryHelper) {
 		Query query = getSession().createQuery(queryHelper.getQueryListHql());
+		System.out.println("======================"+queryHelper.getQueryListHql());
 		List<Object> parameters = queryHelper.getParameters();
 		if(parameters != null){
 			for(int i = 0; i < parameters.size(); i++){
@@ -80,7 +81,9 @@ public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements Base
 	}
 	
 	public PageResult getPageResult(QueryHelper queryHelper, int pageNo, int pageSize) {
+		pageNo=pageNo/pageSize+1;
 		Query query = getSession().createQuery(queryHelper.getQueryListHql());
+		System.out.println("================"+queryHelper.getQueryListHql());
 		List<Object> parameters = queryHelper.getParameters();
 		if(parameters != null){
 			for(int i = 0; i < parameters.size(); i++){

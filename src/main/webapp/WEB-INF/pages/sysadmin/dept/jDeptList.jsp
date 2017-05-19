@@ -4,16 +4,67 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 <title></title>
-<link rel="stylesheet" href="${ctx}/css/jquery.dataTables.min.css"
-	type="text/css"></link>
-<script type="text/javascript" src="${ctx }/js/jquery-1.10.2.min.js"></script>
-<%-- <script type="text/javascript" src="${ctx }/js/jquery-1.4.4.js"></script> --%>
+<link rel="stylesheet" href="${ctx}/css/jquery.dataTables.min.css" type="text/css"></link>
+<script type="text/javascript" src="${ctx }/js/jquery-1.11.2.min.js"></script> 
 <script type="text/javascript" src="${ctx }/js/jquery.dataTables.min.js"></script>
+
 <script>
+		$(function() {
+		initTable();
+		function initTable() {
+			var table = $('#ec_table');
+			var oTable = table.dataTable({
+				'oLanguage' : {
+					'sUrl' : '../resources/dataTables.chinese.txt'
+				},
+				"pageLength" : 5,
+				"lengthMenu" : [ [ 5, 10, 15 ], [ 5, 10, 15 ] ],
+				"bFilter" : true, //过滤功能
+				"bLengthChange" : true, //改变每页显示数据数量
+				"processing" : false,
+				"serverSide" : true,
+				"ordering" : false,
+				"deferRender" : true,
+				"bAutoWidth": false,
+				"ajax" : {
+					"type" : "post",
+					"url" : "getDataTablesDept.aj",
+					"dataSrc" : "data",
+					"data" : function(data) {
+						var param = {};
+						param.start = data.start;
+						param.pageLength = data.length;
+						param.search = data.search;
+						return param;
+					}
+				},
+				"columns" : [ {
+					"data" : function(data) {
+						var html='<input type="checkbox" name="id" value= '+data.deptId+'>';
+						return html;
+					}
+				}, {
+					"data" : "deptId"
+				}, {
+					"data" : "deptId"
+				}, {
+					"data" : "fdeptName"
+				}, {
+					"data" : "deptName"
+				}],
+				"fnDrawCallback" : function(settings) {
+				}
+
+			});
+		}
+		
+	});
+
 	function isOnlyChecked() {
+	
 		var checkBoxArray = document.getElementsByName('id');
 		var count = 0;
 		for ( var index = 0; index < checkBoxArray.length; index++) {
@@ -30,7 +81,7 @@
 	}
 	function toView() {
 		if (isOnlyChecked()) {
-			formSubmit('deptAction_toview', '_self');
+			formSubmit('deptAction_toview.do', '_self');
 		} else {
 			alert("请先选择一项并且只能选择一项，再进行操作！");
 		}
@@ -38,56 +89,12 @@
 	//实现更新
 	function toUpdate() {
 		if (isOnlyChecked()) {
-			formSubmit('deptAction_toupdate', '_self');
+			formSubmit('deptAction_toupdate.do', '_self');
 		} else {
 			alert("请先选择一项并且只能选择一项，再进行操作！");
 		}
 	}
-	$(function() {
 
-		function initTable() {
-			var table = $('#ec_table');
-			var oTable = table.dataTable({
-				'oLanguage' : {
-					'sUrl' : '../resources/dataTables.chinese.txt'
-				},
-				"pageLength" : 10,
-				"lengthMenu" : [ [ 5, 10, 15 ], [ 5, 10, 15 ] ],
-				"bFilter" : true, //过滤功能
-				"bLengthChange" : true, //改变每页显示数据数量
-				"processing" : false,
-				"serverSide" : true,
-				"ordering" : false,
-				"deferRender" : true,
-				"bAutoWidth" : false,
-				"ajax" : {
-					"type" : "post",
-					"url" : "getDataTablesDept.aj",
-					"dataSrc" : "data",
-					"data" : function(data) {
-						var param = {};
-						param.start = data.start;
-						param.pageLength = data.length;
-						param.search = data.search;
-						return param;
-					}
-				},
-				"columns" : [ {
-					"data" : "deptId"
-				}, {
-					"data" : "deptId"
-				}, {
-					"data" : "deptId"
-				}, {
-					"data" : "deptName"
-				}, {
-					"data" : "state"
-				}]
-
-			});
-		}
-		initTable();
-	});
 </script>
 </head>
 
@@ -102,12 +109,12 @@
 							<li id="view"><a href="#" onclick="javascript:toView()">查看</a>
 							</li>
 							<li id="new"><a href="#"
-								onclick="formSubmit('deptAction_tocreate','_self');this.blur();">新增</a>
+								onclick="formSubmit('deptAction_tocreate.do','_self');this.blur();">新增</a>
 							</li>
 							<li id="update"><a href="#" onclick="javascript:toUpdate()">修改</a>
 							</li>
 							<li id="delete"><a href="#"
-								onclick="formSubmit('deptAction_delete','_self');this.blur();">删除</a>
+								onclick="formSubmit('deptAction_delete.do','_self');this.blur();">删除</a>
 							</li>
 						</ul>
 					</div>

@@ -27,6 +27,10 @@ public class DeptDataModelConvertor {
 					deptModel.setFstate(dept.getDept().getState());
 					
 				}
+			}else {
+				deptModel.setFdeptId(" ");
+				deptModel.setFdeptName(" ");
+				deptModel.setFstate(0);
 			}
 			deptModels.add(deptModel);
 			

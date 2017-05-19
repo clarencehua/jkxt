@@ -47,8 +47,9 @@ public class Dept implements java.io.Serializable {
 	// Property accessors
 	@Id
 	@Column(name = "DEPT_ID", unique = true, nullable = false, length = 40)
-	/*@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid")*/
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid")
+	
 	public String getDeptId() {
 		return this.deptId;
 	}
@@ -57,7 +58,7 @@ public class Dept implements java.io.Serializable {
 		this.deptId = deptId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "PARENT_ID")
 	public Dept getDept() {
 		return this.dept;

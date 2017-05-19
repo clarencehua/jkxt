@@ -13,7 +13,7 @@
 <div id="innerMenubar">
   <div id="navMenubar">
 <ul>
-<li id="save"><a href="#" onclick="formSubmit('deptAction_insert','_self');this.blur();">保存</a></li>
+<li id="save"><a href="#" onclick="formSubmit('deptAction_insert.do','_self');this.blur();">保存</a></li>
 <li id="back"><a href="#" onclick="history.go(-1);">返回</a></li>
 </ul>
   </div>
@@ -34,20 +34,17 @@
 	            <td class="columnTitle">上级部门：</td>
 	            <td class="tableContent">
 	            
-	              <!-- 
-	                 name属性代表下拉框的名称
-	                 list: 绑定的集合名   List<Dept>
-	                 headerKey:代表首选项的value属性
-	                 headerValue:代表首选项的文本
-	                 listKey: <option value="${id }"
-	                 listValue：代表中间的文本
-	               -->
-	            	<s:select name="parent.id" list="#deptList" headerKey="" headerValue="--请选择--" listKey="id" listValue="deptName"></s:select>
+	            	<select name="dept.dept.deptId" id="parent_id">
+								<option value="">请选择</option>
+								<c:forEach items="${deptList}" var="li">
+									<option value="${li.deptId}">${li.deptName}</option>
+								</c:forEach>
+					</select>
 	            </td>
 	        </tr>		
 	        <tr>
 	            <td class="columnTitle">部门名称：</td>
-	            <td class="tableContent"><input type="text" name="deptName" value=""/></td>
+	            <td class="tableContent"><input type="text" name="dept.deptName" value=""/></td>
 	        </tr>		
 		</table>
 	</div>
