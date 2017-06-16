@@ -7,7 +7,7 @@
 
 <body>
 <form name="icform" method="post">
-      <input type="hidden" name="id" value="${id}"/>
+      <input type="hidden" name="dept.deptId" value="${dept.deptId}"/>
       
 <div id="menubar">
 <div id="middleMenubar">

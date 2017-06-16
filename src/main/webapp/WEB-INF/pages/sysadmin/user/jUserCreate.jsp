@@ -14,7 +14,7 @@
 <div id="innerMenubar">
   <div id="navMenubar">
 <ul>
-<li id="save"><a href="#" onclick="formSubmit('userAction_insert','_self');this.blur();">保存</a></li>
+<li id="save"><a href="#" onclick="formSubmit('userAction_insert.do','_self');this.blur();">保存</a></li>
 <li id="back"><a href="#" onclick="history.go(-1);">返回</a></li>
 </ul>
   </div>
@@ -38,19 +38,21 @@
        		<tr>
 	            <td class="columnTitle">所在部门：</td>
 	            <td class="tableContent">
-	            	<s:select name="dept.id" list="deptList"
-	            		listKey="id" listValue="deptName"
-	            		headerKey="" headerValue="--请选择--"
-	            	></s:select>
+	            	 <select name="dept.deptId" id="parent_id">
+								<option value="">请选择</option>
+								<c:forEach items="${deptList}" var="li">
+									<option value="${li.deptId}">${li.deptName}</option>
+								</c:forEach>
+					</select>
 	            </td>
 	        </tr>
         	<tr>
 	            <td class="columnTitle">登录名：</td>
-	            <td class="tableContent"><input type="text" name="userName" value=""/></td>
+	            <td class="tableContent"><input type="text" name="user.userName" value=""/></td>
 	            <td class="columnTitle">状态：</td>
 	            <td class="tableContentAuto">
-	            	<input type="radio" name="state" value="1" checked class="input"/>启用
-	            	<input type="radio" name="state" value="0" class="input"/>停用
+	            	<input type="radio" name="user.state" value="1" checked class="input"/>启用
+	            	<input type="radio" name="user.state" value="0" class="input"/>停用
 	            </td>
 	        </tr>
         	<tr>
@@ -58,10 +60,17 @@
 	            <td class="tableContent"><input type="text" name="userInfo.name" value=""/></td>
 	            <td class="columnTitle">直属领导：</td>
 	            <td class="tableContent">
-	            	<s:select name="userInfo.manager.id" list="userList"
+	            	<!-- <s:select name="userInfo.manager.id" list="userList"
 	            		listKey="id" listValue="userInfo.name"
 	            		headerKey="" headerValue="--请选择--"
-	            	></s:select>
+	            	></s:select> -->
+	            	<select name="zsld" id="parent_id">
+								<option value="">请选择</option>
+								<c:forEach items="${userList}" var="li">
+									<option value="${li.userId}">${li.userName}</option>
+								</c:forEach>
+					</select>
+	            	
 	            </td>
 	        </tr>		
 	        <tr>
@@ -115,7 +124,6 @@
 	        </tr>	
 		</table>
 	</div>
- 
  
 </form>
 </body>

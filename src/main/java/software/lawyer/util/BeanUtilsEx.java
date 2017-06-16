@@ -1,8 +1,9 @@
 package software.lawyer.util;
 
 import java.lang.reflect.InvocationTargetException;
-
-import org.springframework.beans.BeanUtils;
+import org.apache.commons.beanutils.ConvertUtils;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.converters.DateConverter;
 
 public class BeanUtilsEx extends BeanUtils {
 	static {

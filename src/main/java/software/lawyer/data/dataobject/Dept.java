@@ -19,7 +19,7 @@ import org.hibernate.annotations.GenericGenerator;
  * Dept entity. @author MyEclipse Persistence Tools
  */
 @Entity
-@Table(name = "dept_p")
+@Table(name = "dept_p", catalog = "jkxt")
 public class Dept implements java.io.Serializable {
 
 	// Fields
@@ -28,7 +28,8 @@ public class Dept implements java.io.Serializable {
 	private Dept dept;
 	private String deptName;
 	private Integer state;
-	
+	private Set<Dept> depts = new HashSet<Dept>(0);
+	private Set<User> userPs = new HashSet<User>(0);
 
 	// Constructors
 
@@ -37,11 +38,13 @@ public class Dept implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Dept(Dept dept, String deptName, Integer state 
-			) {
+	public Dept(Dept dept, String deptName, Integer state, Set<Dept> depts,
+			Set<User> userPs) {
 		this.dept = dept;
 		this.deptName = deptName;
 		this.state = state;
+		this.depts = depts;
+		this.userPs = userPs;
 	}
 
 	// Property accessors
@@ -49,7 +52,6 @@ public class Dept implements java.io.Serializable {
 	@Column(name = "DEPT_ID", unique = true, nullable = false, length = 40)
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid")
-	
 	public String getDeptId() {
 		return this.deptId;
 	}
@@ -58,7 +60,7 @@ public class Dept implements java.io.Serializable {
 		this.deptId = deptId;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PARENT_ID")
 	public Dept getDept() {
 		return this.dept;
@@ -86,12 +88,22 @@ public class Dept implements java.io.Serializable {
 		this.state = state;
 	}
 
-	@Override
-	public String toString() {
-		return "Dept [deptId=" + deptId + ", deptName=" + deptName + ", state="
-				+ state + "]";
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "dept")
+	public Set<Dept> getDepts() {
+		return this.depts;
 	}
 
+	public void setDepts(Set<Dept> depts) {
+		this.depts = depts;
+	}
 
-	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "dept")
+	public Set<User> getUserPs() {
+		return this.userPs;
+	}
+
+	public void setUserPs(Set<User> userPs) {
+		this.userPs = userPs;
+	}
+
 }

@@ -1,7 +1,7 @@
 package software.lawyer.data.dao;
 
-import software.lawyer.data.dataobject.Userb;
+import software.lawyer.data.dataobject.User;
 
-public interface UserDao extends BaseDao<Userb> {
+public interface UserDao extends BaseDao<User> {
 	//public void save(Userb userb);
 }

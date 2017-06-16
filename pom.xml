@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>software.lawyer</groupId>
 	<artifactId>jkxt</artifactId>
@@ -53,8 +54,8 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>3.7</version>
 		</dependency>
-		
-		
+
+
 		<!-- 上传文件 -->
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -67,14 +68,14 @@
 			<version>${commons-fileupload.version}</version>
 		</dependency>
 
-		
-		<!--Json-->
+
+		<!--Json -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>${google-gson.version}</version>
 		</dependency>
-		
+
 		<!-- spring相关 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -245,6 +246,15 @@
 			<artifactId>bcprov-jdk14</artifactId>
 			<version>${bouncycastle.bcprov.version}</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.8.3.redhat-6</version>
+		</dependency>
+
+
 
 	</dependencies>
 

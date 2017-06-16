@@ -113,7 +113,8 @@ public class DeptController {
 			HttpServletResponse response){
 		String str[]=request.getParameterValues("id");
 		for (String string : str) {
-			deptService.deleteById(string);
+			//deptService.deleteById(string);
+			deptService.delete(string);
 		}
 		return "redirect:deptAction_list.do";
 	}

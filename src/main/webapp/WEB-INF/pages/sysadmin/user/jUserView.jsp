@@ -7,13 +7,13 @@
 
 <body>
 <form name="icform" method="post">
-      <input type="hidden" name="id" value="${id}"/>
+      <input type="hidden" name="id" value="${user.userId}"/>
 <div id="menubar">
 <div id="middleMenubar">
 <div id="innerMenubar">
   <div id="navMenubar">
 <ul>
-<li id="save"><a href="#" onclick="formSubmit('deptAction_update','_self');this.blur();">保存</a></li>
+<li id="save"><a href="#" onclick="formSubmit('userAction_update.do','_self');this.blur();">保存</a></li>
 <li id="back"><a href="#" onclick="history.go(-1);">返回</a></li>
 </ul>
   </div>
@@ -33,16 +33,17 @@
 	        <tr>
 	            <td class="columnTitle">所在部门：</td>
 	            <td class="tableContent">
-	            	${dept.deptName }
+	            	${user.dept.deptName }
 	            </td>
 	        </tr>		
 	        <tr>
 	            <td class="columnTitle">用户名：</td>
-	            <td class="tableContent">${userName }</td>
+	            <td class="tableContent">${user.userName }</td>
 	        </tr>	
 	         <tr>
 	            <td class="columnTitle">状态：</td>
-	            <td class="tableContent">${state==0?'停用':'启用' }</td>
+	            <c:if test="${user.state==0}"><td class="tableContent">停用</td></c:if>
+	            <c:if test="${user.state==1}"><td class="tableContent">启用</td></c:if>
 	        </tr>		
 		</table>
 	</div>

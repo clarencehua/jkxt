@@ -2,9 +2,33 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-<table name="dept_p" catalog="jkxt" class="Dept">
-	<primary-key>
-		<generator class="uuid.string"></generator>
-	</primary-key>
-</table>
+	<table name="dept_p" catalog="jkxt" class="Dept">
+		<primary-key>
+			<generator class="uuid.string"></generator>
+		</primary-key>
+	</table>
+	<table name="user_p" catalog="jkxt" class="User">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="role_p" catalog="jkxt" class="Role">
+		<primary-key>
+			<generator class="uuid.string"></generator>
+		</primary-key>
+	</table>
+	<table name="user_info_p" catalog="jkxt" class="UserInfo">
+		<primary-key>
+			<generator class="assigned"></generator>
+		</primary-key>
+	</table>
+	<table name="role_user_p" catalog="jkxt" class="RoleUser"></table>
+	<table name="module_p" catalog="jkxt" class="Module">
+		<primary-key>
+			<generator class="uuid.string"></generator>
+		</primary-key>
+	</table>
+	<table name="role_module_p" catalog="jkxt" class="RoleModule"></table>
+	<table name="khjl_ry" catalog="jkxt" class="KhjlRyVO"></table>
+	<table name="y_la_jxjs" catalog="jkxt" class="YLAJXJS"></table>
 </hibernate-reverse-engineering>

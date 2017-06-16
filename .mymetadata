@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project-module
-  type="WEB"
-  name="jkxt"
-  id="jkxt"
-  context-root="/jkxt"
-  j2ee-spec="5.0"
-  archive="jkxt.war">
+<project-module type="WEB" name="jkxt" id="jkxt" context-root="/jkxt" j2ee-spec="5.0" archive="jkxt.war">
   <attributes>
-    <attribute name="webrootdir" value="src/main/webapp" />
+    <attribute name="webrootdir" value="src/main/webapp"/>
   </attributes>
 </project-module>
-

@@ -34,12 +34,13 @@
 	            <td class="columnTitle">上级部门：</td>
 	            <td class="tableContent">
 	            
-	            	<select name="dept.dept.deptId" id="parent_id">
+	            	 <select name="dept.dept.deptId" id="parent_id">
 								<option value="">请选择</option>
 								<c:forEach items="${deptList}" var="li">
 									<option value="${li.deptId}">${li.deptName}</option>
 								</c:forEach>
 					</select>
+					
 	            </td>
 	        </tr>		
 	        <tr>

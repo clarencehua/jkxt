@@ -100,8 +100,12 @@
     <bean id="baseDao" abstract="true">
     	<property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+    <bean id="moduleDao" class="software.lawyer.data.dao.impl.ModuleDaoImpl" parent="baseDao"></bean>
+    <bean id="roleDao" class="software.lawyer.data.dao.impl.RoleDaoImpl" parent="baseDao"></bean>
+    <bean id="userInfoDao" class="software.lawyer.data.dao.impl.UserInfoDaoImpl" parent="baseDao"></bean>
     <bean id="userDao" class="software.lawyer.data.dao.impl.UserDaoImpl" parent="baseDao"></bean>
 	<bean id="deptDao" class="software.lawyer.data.dao.impl.DeptDaoImpl" parent="baseDao"></bean>
+	
 	
 	</beans>
 
