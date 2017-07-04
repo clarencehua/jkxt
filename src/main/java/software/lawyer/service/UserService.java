@@ -29,4 +29,6 @@ public interface UserService {
 
 	// User根据id删除
 	public void deleteById(Serializable id);
+	
+	public User findUserByUsername(String username);
 }

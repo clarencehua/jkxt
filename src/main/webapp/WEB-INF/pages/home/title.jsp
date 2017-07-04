@@ -1,5 +1,7 @@
 <%@ page language="java" isELIgnored="false" pageEncoding="UTF-8"%>
 <%@ include file="../base.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <jsp:useBean id="now" class="java.util.Date"  />
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -190,10 +192,10 @@
 <div class="PositionFrame_black" id="PositionFrame"></div>
 	<div id="userInfo" style="z-index:999;" onclick="HideLoginDiv()" title="点击关闭">
 		<img src="${ctx}/skin/default/images/title/avataronline.gif" border="0" style="margin-top:-1px;"/>
-		您好：<strong>${_CURRENT_USER.userInfo.name}</strong>&nbsp;&nbsp;|
+		您好：<strong>${_CURRENT_USER.userName}</strong>&nbsp;&nbsp;|
 		您所属单位：
-		<c:if test="${!empty _CURRENT_USER.dept}">
-			<strong>${_CURRENT_USER.dept.deptName}</strong>&nbsp;&nbsp;
+		<c:if test="${_CURRENT_USER.dept!=null}">
+			 <strong>${_CURRENT_USER.dept.deptName}</strong>&nbsp;&nbsp; 
 		</c:if>
 		
 		<img src="${ctx}/skin/default/images/title/close.gif" border="0" />
@@ -212,16 +214,16 @@
 			    	<div class="mavMeau_top"></div>
 			    	<div id="mask">
 <div id="menuContent">
-	 <span id="topmenu" onclick="toModule('home');">系统首页</span><span id="tm_separator"></span>
+<!-- 	 <span id="topmenu" onclick="toModule('home');">系统首页</span><span id="tm_separator"></span>
 	<span id="topmenu" onclick="toModule('cargo');">货运管理</span><span id="tm_separator"></span>
 	<span id="topmenu" onclick="toModule('stat');">统计分析</span><span id="tm_separator"></span>
 	<span id="topmenu" onclick="toModule('baseinfo');">基础信息</span><span id="tm_separator"></span>
 	<span id="topmenu" onclick="toModule('sysadmin');">系统管理</span> 
-	<span id="topmenu" onclick="toModule('sysadmin');">班级管理</span> 
+	<span id="topmenu" onclick="toModule('sysadmin');">班级管理</span>  -->
 	 
 	 
 	 <!-- 当jsp页面碰到shiro标签时就执行AuthRealm中授权方法 -->
-	<%-- <shiro:hasPermission name="系统首页">
+	 <shiro:hasPermission name="系统首页">
 	<span id="topmenu" onclick="toModule('home');">系统首页</span><span id="tm_separator"></span>
 	</shiro:hasPermission>
 	<shiro:hasPermission name="货运管理">
@@ -238,7 +240,7 @@
 	</shiro:hasPermission>
 	<shiro:hasPermission name="流程管理">
 	<span id="topmenu" onclick="toModule('activiti');">流程管理</span>
-	</shiro:hasPermission> --%>
+	</shiro:hasPermission>
 
 </div>
 					<span id="rightKey" onmouseover="periodOffset(this, 'right')"><img src="${ctx}/skin/default/images/title/right_arrow.png"/></span>

@@ -74,7 +74,7 @@ public class RoleModule implements java.io.Serializable {
 		this.role = role;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "MODULE_ID", nullable = false, insertable = false, updatable = false)
 	public Module getModule() {
 		return this.module;

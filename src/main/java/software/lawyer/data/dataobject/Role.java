@@ -159,7 +159,7 @@ public class Role implements java.io.Serializable {
 		this.roleUsers = roleUsers;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "role")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "role")
 	public Set<RoleModule> getRoleModulePs() {
 		return this.roleModulePs;
 	}

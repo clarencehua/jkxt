@@ -85,7 +85,7 @@ public class User implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "DEPT_ID")
 	public Dept getDept() {
 		return this.dept;
@@ -167,7 +167,7 @@ public class User implements java.io.Serializable {
 		this.updateTime = updateTime;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
 	public Set<RoleUser> getRoleUserPs() {
 		return this.roleUserPs;
 	}

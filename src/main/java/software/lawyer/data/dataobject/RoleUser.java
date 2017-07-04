@@ -75,7 +75,7 @@ public class RoleUser implements java.io.Serializable {
 		this.user = user;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ROLE_ID", nullable = false, insertable = false, updatable = false)
 	public Role getRole() {
 		return this.role;

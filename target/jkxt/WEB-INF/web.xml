@@ -29,7 +29,22 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	 <!-- Shiro Security filter  filter-name这个名字的值将来还会在spring中用到  -->
+   <!-- 注意：shiro的filter必须在struts2的filter之前，否则action无法创建 -->
 
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+	
 	<!-- SpringMVC 控制器 -->
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
@@ -40,7 +55,26 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-
+	<!-- 如果没有这个 ajax的请求可能发不出去 -->
+	<filter>
+		<filter-name>hibernateFilter</filter-name>
+		<filter-class>
+			software.lawyer.web.filter.OpenSessionInViewFilter		
+		</filter-class>
+		<init-param>
+			<param-name>singleSession</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>hibernateFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>hibernateFilter</filter-name>
+		<url-pattern>*.aj</url-pattern>
+	</filter-mapping>
+	
 	<!-- 普通页面映射 -->
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>

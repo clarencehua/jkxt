@@ -25,7 +25,7 @@
 				</div>
 			</div>
 			<div class="btnstyle">
-				<input  class="loginImgOut" value="" type="button" onclick="formSubmit('${ctx}/login.action','_self');"
+				<input  class="loginImgOut" value="" type="button" onclick="formSubmit('${ctx}/login.do','_self');"
 				  onmouseover="this.className='loginImgOver'" 
 				  onmouseout="this.className='loginImgOut'"
 				/>
@@ -35,7 +35,7 @@
 				/>
 			</div>
 		  	<div class="msgtip">
-				<c:if test="${!empty errorInfo}">
+				<c:if test="${errorInfo!=null}">
 					${errorInfo}
 				</c:if>
 			</div>
